@@ -22,4 +22,4 @@
 
 **Introduction:**
 
-These learning goals have been combined to bring you ‘NBA-Stats’. This one-page app contains an index.html, script.js, and style.css that accesses data from a public API. An image file will be created for the website tab. ‘NBA-Stats’ will allow the user to 'search' a player and see the player's stats from the current season. The information returned from the server will be displayed on a collector's style sports card. The user will be able to 'add' a player's card to a 'Personal Collection' which will display all cards inside the <div> with an id of personal-collection.
+These learning goals have been combined to bring you ‘NBA-Stats’. This one-page app contains an index.html, script.js, and style.css that accesses data from a public API. An image file will be created for the website tab. ‘NBA-Stats’ will allow the user to 'search' a player and see the player's stats from the current season. The information returned from the server will be displayed on a collector's style sports card. The user will be able to 'add' a player's card to a 'Personal Collection' which will display all cards inside the 'div' with an id of personal-collection.
