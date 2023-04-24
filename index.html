@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>NBA-Stats</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
   </head>
   <body>
     <div class="card-container"></div>
@@ -14,11 +15,12 @@
       <div id="personal-collection"></div>
       <button type="button" id="clear-btn">Clear Collection</button>
     </div>
-    <div class="search-container">
-        <input type="text" id="search-bar" placeholder="Search for a player...">
-        <button type="button" id="search-btn">Search</button>
+    <form class="search-container">
+        <input type="text" id="player-bar" placeholder="Search for a player...">
+        <input type="text" id="team-bar" placeholder="Player Team">
+        <input type="text" id="season-bar" placeholder="Season">
+        <button type="submit">Search</button>
+    </form>
       </div>
-    <script src="index.js"></script>
-    <script src="script.js"></script>
   </body>
 </html>
