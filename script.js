@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log(player)
             })
         })
-        .catch(err => console.error(err))
+        .catch(err => alert('Too many Calls my guy'))
     }
     function populatePlayers(player) { // renders player card on page
         /********************FUNCTION VARIABLES************************/
@@ -88,10 +88,20 @@ document.addEventListener('DOMContentLoaded', () => {
             playerAssists.innerText = 'Assists:' + ' ' + totalAssists // sets player assists to sum of all assists in season
         })
         .catch(err => console.error(err))
-        addPlayerBtn.addEventListener('click', (e) =>{
+       
+		addPlayerBtn.addEventListener('click', (e) => {
             e.preventDefault()
-            console.log('YESSS')
-            personalCollectionDiv.append(playerCard)
+			addPlayerBtn.remove() // removes add player button on click
+			const deletePlayerBtn = document.createElement('button') // creates delete button for player card
+			playerCard.append(deletePlayerBtn) // appends delete button to player card
+			deletePlayerBtn.innerText = 'Delete Player' // sets test content of delete button 
+            // optimstic rendering below this
+			personalCollectionDiv.append(playerCard) // appends plsyer card to personal collection div  // this is where the post will be 
+			//event listener for delete button
+			deletePlayerBtn.addEventListener('click', e => {
+				e.preventDefault()
+				playerCard.remove()
+			}) 
         })
     }
     /***********************EVENT LISTENERS*************************/
@@ -102,3 +112,4 @@ document.addEventListener('DOMContentLoaded', () => {
         getPlayer(playerLastName) // invokes function with playerLastName
     })
 })
+/* Still needs a post and delete request to the db.json. post will replace line 99 and post the data to db.json. Another function is needed to get from the db.json and post to the personal collection div*/
