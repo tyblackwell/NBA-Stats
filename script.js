@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log(player)
             })
         })
-        .catch(err => alert('Too many Calls my guy'))
+        .catch(err => console.error(err))
     }
     function populatePlayers(player) { // renders player card on page
         /********************FUNCTION VARIABLES************************/
