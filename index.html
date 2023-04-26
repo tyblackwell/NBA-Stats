@@ -5,84 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>NBA-Stats Reciever </title>
+    <title>NBA-Stats Reciever</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.ico" />
+    <link rel="icon" href="favicon.ico"/>
     <script src="script.js"></script>
   </head>
   <body>
-  <section class="front display text-center" id="top display">
-    <div class="text-center">
-    <div class="card-container"></div>
-    <!--div container for top navigation bar-->
-    <div class="personal-collection"><!--where it used to be-->
-      <header class="masthead">
-        <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
-            <div class="d-flex justify-content-center">
-                <div class="text-center">
-                    <h1 class="mx-auto text-white-50 text-uppercase">NBA Stats Reciever</h1>
-                    <h2 class="text-white-50 mx-auto mt-2 mb-5">A dedicated website, providing you al of your NBA stats needs</h2>
-                    <a class="btn btn-primary" href="#about">Get Started</a><!--recolor and refind-->
-                </div>
-            </div>
+    <header class="masthead"> <!--front display website header-->
+      <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+        <div class="d-flex justify-content-center">
+          <div class="text-center">
+            <h1 class="mx-auto text-white-50 text-uppercase">NBA Stats Reciever</h1>
+            <h2 class="text-white-50 mx-auto mt-2 mb-5">A dedicated website, providing you al of your NBA stats needs</h2>
+            <a class="btn btn-primary" href="#about">Get Started</a><!--recolor and refind-->
+          </div>
         </div>
       </div>
     </header>
-  </div>    
-  </section>
-  <section class="about-section text-center" id="about">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-    <div class="Bball card">
-      <!--bbcall card popup here -->
-    </div>
-  </div>
-    <div class="container px-4 px-lg-5">
-        <!--delete code frome here -->
+    <section class="about-section text-center" id="about"> <!--Search area contains form and results-->
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div id="card-container"></div> <!-- Parent Card Div-->
+       
+      </div>
+      <div class="container px-4 px-lg-5"> <!--form div-->
         <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-lg-8">
-                <!--place card info here -->
-                <form class="search-container">
-                  <!--All submit events, need to text align center in a ls or ul-->
-                  <!--make sure data is cleared after used or stored depends on how data is stored after creation-->
-                  <!--starred player -->
-                  <label></label>
-                  <input type="text" id="player-bar" placeholder="Search for a player...">
-                  <label></label><!--min max year-->
-                  <!--alert if year is to max or to min-->
-                  <!--search by player, search by team -->
-                  <input type="text" id="team-bar" 
-                  placeholder="Player team "> 
-                  <form>
-                    <select name="Team number"><!--drop down menu-->
-                      <option value="0">0</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
-                      <option value="10">10</option>
-                    </select>
-                  </form>
-                  <input type="text" id="season-bar" placeholder="Season YYYY">
-                  <label></label>
-                  <button type="submit">Search</button>
-                  <!--make a delete button addEvent listener-->
-                  
-                  <div id="personal-collection"></div>
-                  <button type="button" id="clear-btn">Clear Collection</button>
-                  <h5 class="justify-content-center text-white-50 text-uppercase mt-2 mx-auto">Build Your Personal Collection!</h5><!--title was h2-->
-                  
-              </form>
-            </div>
+          <div class="col-lg-8">
+            <form id="player-search"> <!--form-->
+              <input type="text" id="player-name" placeholder="Search for a player...">
+              <input type="text" id="season" placeholder="Season">
+              <button type="submit">Search</button>
+            </form>
+          </div>
         </div>
-        <img class="img-fluid" src="https://i.imgur.com/Jdgh3pX.jpg" alt="..." />
-    </div>
-</section>
- 
-    </div>
+      </div>
+    </section>
+    <section id="new-collection" class="img-fluid"> <!--Personal Collection Div-->
+      <div id="personal-collection" class="personal-collection"></div>
+       <img class="img-fluid" src="https://i.imgur.com/Jdgh3pX.jpg" alt="..." /> 
+    </section>
   </body>
 </html>
