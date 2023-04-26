@@ -20,7 +20,7 @@
     
   }
   .personal-collection{
-    background-image: url("https://i.imgur.com/EKnBgSj.jpg");
+    background-image: black;
     background-position: top right;
     
     
@@ -135,4 +135,23 @@
 
     h5 {
         
+    }
+    .card {
+      border: 1px solid #ccc;
+      width: 300px;
+      height: 400px;
+      padding: 20px;
+      text-align: center;
+    }
+    .card-header {
+      margin-bottom: 20px;
+    }
+    .card-image img {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 20px;
+    }
+    .card-stats p {
+      display: inline-block;
+      margin-right: 10px;
     }

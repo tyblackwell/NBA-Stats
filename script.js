@@ -30,24 +30,27 @@ document.addEventListener('DOMContentLoaded', () => {
 	
 	function populatePlayers(player) { // renders player card on page
 		/********************FUNCTION VARIABLES************************/
+		const playerId = player.id // sets playerId to the id of the current player 
+		const season = document.getElementById('season').value // saves value of season text field to variable
 		const playerCard = document.createElement('div') // player card
-		playerCard.setAttribute('id', 'player-card') // sets id attribute of player card
-		const playerName = document.createElement('h2') // creates player name element
-		const playerJersey = document.createElement('h3') // creates player jersey no element
+		playerCard.setAttribute('class', 'card') // sets id attribute of player card
+		const playerName = document.createElement('h6') // creates player name element
+		const playerJersey = document.createElement('h5') // creates player jersey no element
 		const playerHeight = document.createElement('h4') // creates player height element 
 		const playerWeight = document.createElement('h4') // creates player weight element
 		const playerCollege = document.createElement('h4') // creates player college element
 		const playerTeam = document.createElement('h3') // creates player team element
 		const teamLogoImg = document.createElement('img') // creates team logo image element
-		const playerAssists = document.createElement('h3') // creates player assists element
-		const playerPoints = document.createElement('h3') // creates player points element
+		const seasonLabel = document.createElement('h3') // creates season label element
+		seasonLabel.innerText = `${season} Season Totals:`
+		const playerAssists = document.createElement('h4') // creates player assists element
+		const playerPoints = document.createElement('h4') // creates player points element
 		const addPlayerBtn = document.createElement('button') // button for adding player to personal collection
 		addPlayerBtn.innerText = 'Add Player'
-		addPlayerBtn.setAttribute('id', 'add-player-btn')
+		addPlayerBtn.setAttribute('class', 'add-player-btn')
 		addPlayerBtn.setAttribute('type', 'button')
-		const playerId = player.id // sets playerId to the id of the current player 
-		const season = document.getElementById('season').value // saves value of season text field to variable
-	
+		const personalCollectionDiv = document.getElementById('personal-collection')
+		
 		/**********POPULATING PLAYER INFO ELEMENTS************************/	
 		if (player.leagues.standard.active === true) { // filters only active players
 			playerName.innerText = player.firstname + ' ' + player.lastname // populates player name element
@@ -65,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				playerCollege, 
 				playerTeam, 
 				teamLogoImg, 
+				seasonLabel,
 				playerPoints,
 				playerAssists, 
 				addPlayerBtn
@@ -89,11 +93,15 @@ document.addEventListener('DOMContentLoaded', () => {
 			  const totalPoints = pointsValues.reduce((total, value) => total + value, 0);
 			playerPoints.innerText = 'Points:' + ' ' + totalPoints // sets player points to sum of all points in season
 			playerAssists.innerText = 'Assists:' + ' ' + totalAssists // sets player assists to sum of all assists in season
-			
-			
 		})
-		
 		.catch(err => console.error(err))
+
+		addPlayerBtn.addEventListener('click', (e) =>{
+			e.preventDefault()
+			console.log('YESSS')
+
+			personalCollectionDiv.append(playerCard)
+		})
 	}
 	
 	
@@ -104,5 +112,4 @@ document.addEventListener('DOMContentLoaded', () => {
 		let playerLastName = document.getElementById('player-name').value // saves value of player input to var
 		getPlayer(playerLastName) // invokes function with playerLastName
 	})
-	
-	})
+})
