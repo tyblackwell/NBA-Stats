@@ -9,7 +9,6 @@
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
-  /* font-family: "Open Sans" */
 }
 .masthead h2, .masthead .h2 {
   max-width: 20rem;
@@ -43,7 +42,15 @@
 .btn-primary:hover {
 background-color: rgb(194, 0, 0);
 }
-
+#player-search {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+#card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
 #new-collection {
   background: url("https://i.imgur.com/Jdgh3pX.jpg");
   background-repeat: no-repeat;
@@ -57,11 +64,9 @@ background-color: rgb(194, 0, 0);
   flex-wrap: wrap;
   gap: 4px;
 }
-/* flex wrap allows  */
 .about-section {
   padding-top: 15rem;
   background-color:#080808
-  /*background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.9) 75%, rgba(0, 0, 0, 0.8) 100%);*/
 }
 .about-section p {
   margin-bottom: 5rem;

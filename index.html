@@ -29,11 +29,11 @@
       <div class="container px-4 px-lg-5"> <!--form div-->
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-lg-8">
-            <form id="player-search"> <!--form-->
-              <label for ='player-name'>Player Name</label>
+            <form id="player-search">
+              <label for='player-name'>Player Name</label>
               <input type="text" id="player-name" placeholder="Last Name">
               <label for="season">Season</label>
-              <input type="text" id="season" placeholder="YYYY">
+              <input type="number" id="season" placeholder="YYYY" min="2015" max="2022">
               <button type="submit">Search</button>
             </form>
           </div>
@@ -42,7 +42,6 @@
     </section>
     <section id="new-collection" > <!--Personal Collection Div--> <!--class="img-fluid"-->
       <div id="personal-collection" class="personal-collection"></div>
-       <!-- <img class="img-fluid" src="https://i.imgur.com/Jdgh3pX.jpg" alt="..." />  -->
     </section>
   </body>
 </html>

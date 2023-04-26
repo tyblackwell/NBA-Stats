@@ -42,18 +42,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const playerAssists = document.createElement('h4') // creates player assists element
         const playerPoints = document.createElement('h4') // creates player points element
         const addPlayerBtn = document.createElement('button') // button for adding player to personal collection
-        addPlayerBtn.innerText = 'Add Player'
-        addPlayerBtn.setAttribute('class', 'add-player-btn')
-        addPlayerBtn.setAttribute('type', 'button')
-        const personalCollectionDiv = document.getElementById('personal-collection')
-        /**********POPULATING PLAYER INFO ELEMENTS************************/
+        addPlayerBtn.innerText = 'Add Player' // sets text content of addPlayerBtn
+        addPlayerBtn.setAttribute('class', 'add-player-btn') // assigns class to add player button for styling
+        addPlayerBtn.setAttribute('type', 'button') // sets type attribute for add player button
+        const personalCollectionDiv = document.getElementById('personal-collection') // variable for personal collection div
+        
+		/**********POPULATING PLAYER INFO ELEMENTS************************/
         if (player.leagues.standard.active === true) { // filters only active players
             playerName.innerText = player.firstname + ' ' + player.lastname // populates player name element
             playerJersey.innerText = 'Jersey #:' + ' ' + player.leagues.standard.jersey // populates player jersey element
             playerHeight.innerText = 'Height:'  + ' ' + player.height.feets + 'ft' + ' ' + player.height.inches + 'in' // populates player height element
             playerWeight.innerText = 'Weight:' + ' ' + player.weight.pounds // populates player weight element
             playerCollege.innerText = 'College:' + ' ' + player.college // populates player college element
-            /***************APPENDING PLAYER INFO ELEMENTS********************/
+            
+			/***************APPENDING PLAYER INFO ELEMENTS********************/
             playerCard.append( // appends all player info elements to player card
                 playerName,
                 playerJersey,
@@ -69,7 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
             )
             cardContainer.append(playerCard) // appends player card to container div
         }
-        fetch(`${url}players/statistics?id=${playerId}&season=${season}`, options) // get player statistics
+		// get player statistics
+        fetch(`${url}players/statistics?id=${playerId}&season=${season}`, options) 
         .then(response => response.json())
         .then(response => {
             const stats = response.response // saves response array into a variable
@@ -80,30 +83,52 @@ document.addEventListener('DOMContentLoaded', () => {
             teamLogoImg.src = teamLogo // sets img source for teamLogoImg
             // next two lines iterate array and add all assist values together
             const assistValues = stats.map(stats => stats.assists);
-              const totalAssists = assistValues.reduce((total, value) => total + value, 0);
+            const totalAssists = assistValues.reduce((total, value) => total + value, 0);
             //next two lines iterate array and add all points values together
             const pointsValues = stats.map(stats => stats.points);
-              const totalPoints = pointsValues.reduce((total, value) => total + value, 0);
+            const totalPoints = pointsValues.reduce((total, value) => total + value, 0);
             playerPoints.innerText = 'Points:' + ' ' + totalPoints // sets player points to sum of all points in season
             playerAssists.innerText = 'Assists:' + ' ' + totalAssists // sets player assists to sum of all assists in season
-        })
-        .catch(err => console.error(err))
-       
-		addPlayerBtn.addEventListener('click', (e) => {
-            e.preventDefault()
-			addPlayerBtn.remove() // removes add player button on click
-			const deletePlayerBtn = document.createElement('button') // creates delete button for player card
-			playerCard.append(deletePlayerBtn) // appends delete button to player card
-			deletePlayerBtn.innerText = 'Delete Player' // sets test content of delete button 
-            // optimstic rendering below this
-			personalCollectionDiv.append(playerCard) // appends plsyer card to personal collection div  // this is where the post will be 
-			//event listener for delete button
-			deletePlayerBtn.addEventListener('click', e => {
+			
+			//event listener for add player button
+			addPlayerBtn.addEventListener('click', (e) => {
 				e.preventDefault()
-				playerCard.remove()
-			}) 
+				addPlayerBtn.remove() // removes add player button on click
+				const deletePlayerBtn = document.createElement('button') // creates delete button for player card
+				playerCard.append(deletePlayerBtn) // appends delete button to player card
+				deletePlayerBtn.innerText = 'Delete Player' // sets text content of delete button 
+				// POST to add card to JSON
+				fetch(`http://localhost:3000/cards`, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({
+						name: player.firstname + ' ' + player.lastname,
+						jersery: player.leagues.standard.jersey,
+						height: player.height.feets + ' ' + player.height.inches,
+						weight: player.weight.pounds,
+						college: player.college,
+						img: teamLogo,
+						assists: totalAssists,
+						points: totalPoints,
+						season: season
+					})
+				})
+				.then(resp => resp.json())
+				.then(resp => {
+					deletePlayerBtn.addEventListener('click', e => {
+						e.preventDefault()
+						//DELETE request 
+						fetch(`http://localhost:3000/cards/${resp.id}`, {
+							method: 'DELETE',
+							headers: { 'Content-Type': 'application/json' },	
+						})
+						playerCard.remove() 
+					})
+				})
+       		})
         })
-    }
+		.catch(err => console.error(err))
+	}
     /***********************EVENT LISTENERS*************************/
     // event listener for from submission
     document.getElementById('player-search').addEventListener("submit", (e) => {
