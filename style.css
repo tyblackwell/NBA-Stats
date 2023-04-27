@@ -44,7 +44,7 @@
 }
 /* creating hover event over orimary button  */
 .btn-primary:hover {
-background-color: rgb(194, 0, 0);
+background-color: rgb(238, 105, 105);
 }
 /*  player search styling for button */
 #player-search {
@@ -92,7 +92,7 @@ padding: 20px;
 text-align: center;
 background-image: url("https://i.imgur.com/gUWeMoF.jpg");
 background-position: center;
-color: white;
+color: rgb(179, 179, 179);
 margin: auto;
 }
 .card img {
@@ -104,29 +104,49 @@ margin: 0 auto;
 font-size: medium;
 }
 .card p {
-  margin-bottom: 0;
+  margin-bottom: 5px;
 }
 /* buttons and their css edits  */
 #player-name{/*fix*/
   background: red;
-  color: white;
+  color: rgb(255, 255, 255);
   border-color: white;
-  width: 100px;
-  height: 32px;
+  width: 150px;
+  height: 45px;
+  margin: auto;
 }
 input[type="number"] {
   background: red;
   border-color: white;
-  width: 100px;
-  height: 32px;
+  width: 150px;
+  height: 45px;
+  margin: auto;
 }
-button[type="submit"] {
+.comment-field {
+  background: red;
+}
+button {
   background: black;
-  color: white;
+  color: rgb(179, 179, 179);
+  width:100px;
+  margin: auto;
+}
+.card-button{
+  background: black;
+  color: rgb(179, 179, 179);
+  width: 200px;
+  padding: 0px;
+  margin:auto;
+  margin-top: 2px;
+  margin-bottom: 2px;
+
+}
+button:hover {
+  background-color: rgb(209, 98, 98);
 }
 /* personal collection Title for collection needs font styling  */
 #editPersonal {
-  color: white;
+  color: rgb(179, 179, 179);
   font-size: 70px;
 }
 /*mobile view for tablet and mobile*/
@@ -135,4 +155,21 @@ button[type="submit"] {
   #editPersonal {
     font-size: 30px;
   }
+}
+
+#player-search {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+#season {
+  color: rgb(255, 255, 255);
+}
+
+::placeholder {
+  color:white;
+  opacity: 1;
+}
+input{
+  text-align: center
 }

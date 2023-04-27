@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify({
                         name: player.firstname + ' ' + player.lastname, // posts player name to json
                         jersey: player.leagues.standard.jersey, // posts player jersey to json
-                        height: player.height.feets + ' ' + player.height.inches, // posts player height to json
+                        height: player.height.feets + 'ft' + ' ' + player.height.inches + 'in', // posts player height to json
                         weight: player.weight.pounds, // posts player weight to json
                         college: player.college, // posts player college to json
                         img: teamLogo, // posts team logo url to json
@@ -158,21 +158,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const playerPoints = document.createElement('h4') // creates player points element
             const playerAssists = document.createElement('h4') // creates player assists element
             const deletePlayerBtn = document.createElement('button') // creates delete button for player card
-            deletePlayerBtn.setAttribute('class', 'button') // sets class to button for styling
-            deletePlayerBtn.innerText = 'Delete Player' // sets text content of delete button   
+            deletePlayerBtn.setAttribute('class', 'card-button') // sets class to button for styling
+            deletePlayerBtn.innerText = 'Delete' // sets text content of delete button   
             const commentField = document.createElement('input')//creating comment field
             commentField.setAttribute('type', 'search') // setting attributes for the comment field
             commentField.setAttribute('placeholder', "add comment")
             commentField.setAttribute('maxlength', '50') // setting attributes for the submit button
+            commentField.setAttribute('class', 'comment-field')
             const commentSubmit =  document.createElement('button') // creates submit button for comment field
             commentSubmit.setAttribute('type', 'submit') // setting attributes for the submit button
-            commentSubmit.innerText = 'Submit comment'
+            commentSubmit.setAttribute('class', 'card-button')
+            commentSubmit.innerText = 'Submit'
             const commentP =  document.createElement('p') // creates comment field when posted
             commentP.textContent = player.comment // displays comment upon submit
             
             // populaing elements with player info from json
             playerName.innerText = player.name // populates player name element
-            playerJersey.innerText = 'Jersey #:' + ' ' + player.jersey // populates player jersey element
+            playerJersey.innerText = 'Jersey #' + ' ' + player.jersey // populates player jersey element
             playerHeight.innerText = 'Height:'  + ' ' + player.height // populates player height element
             playerWeight.innerText = 'Weight:' + ' ' + player.weight // populates player weight element
             playerCollege.innerText = 'College:' + ' ' + player.college // populates player college element
@@ -197,11 +199,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         'comment' : commentValue
                     }) 
                 })
+                commentField.value = ''
             })
             
         /***************APPENDING PLAYER INFO ELEMENTS********************/
             playerCard.append( // appends all player info elements to player card
-                commentP,
                 playerName,
                 playerJersey,
                 playerHeight,
@@ -212,9 +214,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 seasonLabel,
                 playerPoints,
                 playerAssists,
-                deletePlayerBtn,
+                commentP,
                 commentField,
-                commentSubmit
+                commentSubmit,
+                deletePlayerBtn
             )
 
             personalCollectionDiv.append(playerCard)
