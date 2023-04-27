@@ -173,3 +173,9 @@ button:hover {
 input{
   text-align: center
 }
+
+.comment-field {
+  width: 225px;
+  margin: auto;
+  margin-bottom: 20px;
+}
