@@ -90,3 +90,11 @@ margin: 0 auto;
 .card h1, h2, h3, h4, h5 ,h6 {
 font-size: medium;
 }
+
+.card p {
+  margin-bottom: 0;
+}
+
+#new-collection h2 {
+  text-align: center;
+}
